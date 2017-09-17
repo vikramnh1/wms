@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list">
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url">http://17.224.50.205:63085</stringProp>
+            <stringProp name="Authorization.username">DTDC</stringProp>
+            <stringProp name="Authorization.password">11601@dtdc</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+        </collectionProp>
+      </AuthManager>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="OrderNumber" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">OrderCretate01.txt</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">OrderNumber</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="RunTimeSKU" enabled="true">
+        <stringProp name="filename">OrderSKU01.txt</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">RunTimeSKU</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">250</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <longProp name="ThreadGroup.start_time">1504411822000</longProp>
+        <longProp name="ThreadGroup.end_time">1504411822000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Simple Controller" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">dbId=116</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">17.224.50.205</stringProp>
+            <stringProp name="HTTPSampler.port">63085</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/eRetailWMS/service/login</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">RFREQzoxMTYwMUBkdGRj</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">dbId</stringProp>
+                  <stringProp name="Header.value">1116</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="token" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">token</stringProp>
+              <stringProp name="RegexExtractor.regex">token&quot;:&quot;(.*?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">token_not_found</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Simple Controller" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="dbId" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">116</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">dbId</stringProp>
+                </elementProp>
+                <elementProp name="tokenId" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${token}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">tokenId</stringProp>
+                </elementProp>
+                <elementProp name="data" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{ 	&quot;client_Id&quot;: &quot;101014&quot;, 	&quot;ext_loc_Id&quot;: &quot;DR1&quot;, 	&quot;ext_order_id&quot;: &quot;${OrderNumber}&quot;, 	&quot;order_date&quot;: &quot;${__time(dd/MM/yyyy hh:mm:ss)}&quot;, 	&quot;ext_status&quot;: &quot;confirmed&quot;, 	&quot;payment_mode&quot;: &quot;prepaid&quot;, 	&quot;order_amount&quot;: &quot;100&quot;, 	&quot;order_currency&quot;: &quot;INR&quot;, 	&quot;cod_amount&quot;: &quot;00&quot;, 	&quot;shipping_charges&quot;: &quot;0&quot;, 	&quot;store_Credit&quot;: &quot;00&quot;, 	&quot;awb_no&quot;: &quot;&quot;, 	&quot;transporter_name&quot;: &quot;&quot;, 	&quot;tax_amount&quot;: &quot;0&quot;, 	&quot;ext_book_loc&quot;: &quot;M01&quot;, 	&quot;master_orderno&quot;: &quot;&quot;, 	&quot;gift_wrap&quot;: &quot;&quot;, 	&quot;hide_pricetag&quot;: &quot;&quot;, 	&quot;priority&quot;: &quot;&quot;, 	&quot;gvvalue&quot;: &quot;00&quot;, 	&quot;gift_frm&quot;: &quot;Vikram&quot;, 	&quot;gift_to&quot;: &quot;Kumar&quot;, 	&quot;gift_msg&quot;: &quot;HAPPY&quot;, 	&quot;donationValue&quot;: &quot;00&quot;, 	&quot;shipTogether&quot;: &quot;&quot;, 	&quot;isReplacementOrder&quot;: &quot;&quot;, 	&quot;org_extOrderNo&quot;: &quot;&quot;, 	&quot;ordertag&quot;: &quot;&quot;, 	&quot;ship_gstin&quot;: &quot;SHIPGST00002&quot;, 	&quot;bill_gstin&quot;: &quot;BILGST00001&quot;, 	&quot;ship_companyname&quot;: &quot;XYZ companyname&quot;, 	&quot;bill_companyname&quot;: &quot;ABC 99companyname&quot;, 	&quot;consignee&quot;: { 		&quot;ext_cust_code&quot;: &quot;VIKRAM&quot;, 		&quot;shipping_name&quot;: &quot;vikram&quot;, 		&quot;shipping_add1&quot;: &quot;add&quot;, 		&quot;shipping_add2&quot;: &quot;add2&quot;, 		&quot;shipping_add3&quot;: &quot;add3&quot;, 		&quot;shipping_add4&quot;: &quot;add4&quot;, 		&quot;shipping_pin&quot;: &quot;110030&quot;, 		&quot;shipping_city&quot;: &quot;NOIDA&quot;, 		&quot;shipping_state&quot;: &quot;UTTAR PRADESH&quot;, 		&quot;shipping_country&quot;: &quot;IND&quot;, 		&quot;shipping_phone&quot;: &quot;012301223&quot;, 		&quot;shipping_email&quot;: &quot;abd01.Vikram@gmail.com&quot;, 		&quot;billing_name&quot;: &quot;kumar&quot;, 		&quot;billing_add1&quot;: &quot;add&quot;, 		&quot;billing_add2&quot;: &quot;add3&quot;, 		&quot;billing_add3&quot;: &quot;add2&quot;, 		&quot;billing_add4&quot;: &quot;add5&quot;, 		&quot;billing_pin&quot;: &quot;110030&quot;, 		&quot;billing_city&quot;: &quot;NOIDA&quot;, 		&quot;billing_state&quot;: &quot;UTTAR PRADESH&quot;, 		&quot;billing_country&quot;: &quot;IND&quot;, 		&quot;billing_phone&quot;: &quot;234234&quot;, 		&quot;billing_email&quot;: &quot;ancVikram@gmail.com&quot; 	}, 	&quot;OrderLines&quot;: [{ 		&quot;client_Id&quot;: &quot;101014&quot;, 		&quot;order_product_id&quot;: &quot;1&quot;, 		&quot;ext_sku&quot;: &quot;${RunTimeSKU}&quot;, 		&quot;qty_ordered&quot;: &quot;1&quot;, 		&quot;qty_close&quot;: &quot;0&quot;, 		&quot;unit_price&quot;: &quot;200&quot;, 		&quot;discount_amount&quot;: &quot;00&quot;, 		&quot;tax_amount&quot;: &quot;00&quot;, 		&quot;tax_groupcode&quot;: &quot;999&quot;, 		&quot;taxpercent&quot;: &quot;0&quot;, 		&quot;gvvalue&quot;: &quot;0&quot;, 		&quot;store_Credit&quot;: &quot;0&quot;, 		&quot;priority&quot;: &quot;1&quot;, 		&quot;UDF3&quot;: &quot;aa&quot;, 		&quot;UDF4&quot;: &quot;bb&quot;, 		&quot;UDF5&quot;: &quot;cc&quot; 	}] }]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">data</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">17.224.50.205</stringProp>
+            <stringProp name="HTTPSampler.port">63085</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/eRetailWMS/service/Outbound/Order/CreateOrder</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>
